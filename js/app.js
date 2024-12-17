@@ -1,5 +1,6 @@
 Ext.onReady(() => {
   // elementManipulation();
   // templates();
-  xTemplates();
+  // xTemplates();
+  advancedXTemplates();
 });
