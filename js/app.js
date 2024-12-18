@@ -1,3 +1,5 @@
+Ext.require(["Ext.button.Button", "Ext.panel.Panel", "Ext.toolbar.Toolbar"]);
+
 Ext.onReady(() => {
-  components1();
+  panelToolbar4();
 });
