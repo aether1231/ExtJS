@@ -1,3 +1,186 @@
+const tabPanel = () => {
+  var simpleTab = {
+    title: "Personal Information",
+    html: "This is my first tab!",
+  };
+
+  var closableTab = {
+    title: "Other Information",
+    html: "Please close when done reading.",
+  };
+
+  var disabledTab = {
+    title: "Disabled tab",
+    itemId: "disabledTab",
+    html: "Peekaboo!",
+    disabled: true,
+    closable: true,
+  };
+
+  var tabPanel = Ext.create("Ext.tab.Panel", {
+    activeTab: 0,
+    itemId: "myTPanel",
+    items: [simpleTab, closableTab, disabledTab],
+  });
+
+  Ext.create("Ext.window.Window", {
+    height: 300,
+    width: 400,
+    layout: "fit",
+    items: tabPanel,
+  }).show();
+
+  //        Ext.getCmp('myTPanel').unhitemIdeTabStripItem('disabledTab');
+
+  var embeddedTabPanel = {
+    xtype: "tabpanel",
+    title: "My second tab",
+    closable: true,
+    activeTab: 0,
+    items: [
+      {
+        title: "Inner tab 1",
+      },
+      {
+        title: "Inner tab 2",
+      },
+    ],
+  };
+
+  var complexTab = {
+    title: "A Complex tab",
+    layout: "border",
+    defaults: {
+      frame: true,
+      split: true,
+    },
+    items: [
+      {
+        html: "Center Panel",
+        region: "center",
+      },
+      {
+        html: "North Panel",
+        region: "north",
+        height: 25,
+      },
+      {
+        html: "West Panel",
+        region: "west",
+        height: 25,
+      },
+    ],
+  };
+
+  var tPanel = Ext.ComponentQuery.query("#myTPanel")[0];
+};
+
+const messageBox2 = () => {
+  Ext.MessageBox.show({
+    title: "Hold on there cowboy!",
+    msg: "We're doing something...",
+    progressText: "Initializing...",
+    width: 300,
+    progress: true,
+    closable: false,
+  });
+
+  var updateFn = function (num) {
+    return function () {
+      if (num == 6) {
+        Ext.MessageBox.updateProgress(100, "All Items saved!");
+        Ext.Function.defer(Ext.MessageBox.hide, 1500, Ext.MessageBox);
+      } else {
+        var i = num / 6;
+        var pct = Math.round(100 * i);
+        Ext.MessageBox.updateProgress(i, pct + "% completed");
+      }
+    };
+  };
+
+  for (var i = 1; i < 7; i++) {
+    setTimeout(updateFn(i), i * 500);
+  }
+};
+
+const messageBox1 = () => {
+  var console = window.console;
+  var myCallback = function (btn, text) {
+    console.info("You pressed " + btn);
+    if (text) {
+      console.info("You entered : " + text);
+    }
+  };
+
+  var msg = "Your document was saved successfully";
+  var title = "Save Status";
+  Ext.MessageBox.alert(title, msg);
+
+  Ext.defer(function () {
+    Ext.Msg.show({
+      title: "Hold on there cowboy!",
+      msg: "Are you sure you want to reboot the internet?",
+      width: 300,
+      buttons: Ext.MessageBox.YESNOCANCEL,
+      fn: myCallback,
+      icon: Ext.MessageBox.ERROR,
+    });
+  }, 2000);
+
+  Ext.defer(function () {
+    Ext.MessageBox.wait("We're doing something...", "Hold on...");
+  }, 4000);
+};
+
+const modalWindow = () => {
+  var win = Ext.create("Ext.window.Window", {
+    height: 75,
+    width: 200,
+    modal: true,
+    title: "This is one rigid window",
+    html: "Try to move or resize me. I dare you.",
+    plain: true,
+    border: false,
+    resizable: false,
+    draggable: false,
+    closable: false,
+    buttonAlign: "center",
+    buttons: [
+      {
+        text: "I give up!",
+        handler: function () {
+          win.close();
+        },
+      },
+    ],
+  });
+  win.show();
+};
+
+const animatedWindow = () => {
+  var win;
+  var newWindow = function (btn) {
+    if (!win) {
+      win = Ext.create("Ext.window.Window", {
+        animateTarget: btn.el,
+        html: "My first vanilla Window",
+        closeAction: "hide",
+        id: "myWin",
+        height: 200,
+        width: 300,
+        constrain: true,
+      });
+    }
+    win.show();
+  };
+  Ext.create("Ext.button.Button", {
+    renderTo: Ext.getBody(),
+    text: "Open my Window",
+    style: "margin: 100px",
+    handler: newWindow,
+  });
+};
+
 const panelToolbar4 = () => {
   var allButtons = [{ text: "Btn 1" }, { text: "Btn 2" }, { text: "Btn 3" }];
 
