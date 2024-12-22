@@ -9,5 +9,13 @@ Ext.onReady(() => {
   // layoutAnchor();
   // layoutAnchor2();
   // layoutFit();
-  layoutAccordion();
+  // layoutAccordion();
+  // layoutCard();
+  // layoutColumn();
+  // layoutHbox();
+  // layoutVbox();
+  // layoutTable();
+  // layoutTable2();
+  // layoutBorder();
+  layoutBorder2();
 });
