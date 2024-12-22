@@ -4,5 +4,7 @@ Ext.onReady(() => {
   // modalWindow();
   // messageBox1();
   // messageBox2();
-  tabPanel();
+  // tabPanel();
+  // layoutAuto();
+  layoutAnchor();
 });

@@ -1,3 +1,76 @@
+const layoutAnchor = () => {
+  var myWin = Ext.create("Ext.Window", {
+    height: 300,
+    width: 300,
+    layout: "anchor",
+    autoScroll: true,
+    border: false,
+    anchorSize: "400",
+    items: [
+      {
+        title: "Panel1",
+        anchor: "100%, 25%",
+        frame: true,
+      },
+      {
+        title: "Panel2",
+        anchor: "0, 50%",
+        frame: true,
+      },
+      {
+        title: "Panel3",
+        anchor: "50%, 25%",
+        frame: true,
+      },
+    ],
+  });
+
+  myWin.show();
+};
+
+const layoutAuto = () => {
+  var childPnl1 = {
+    frame: true,
+    height: 50,
+    html: "My First Child Panel",
+    title: "First children are fun",
+  };
+
+  var childPnl2 = {
+    xtype: "panel",
+    html: "Second child",
+    title: "Second children have all the fun!",
+  };
+
+  var myWin = Ext.create("Ext.Window", {
+    height: 300,
+    width: 300,
+    title: "A window with a container layout",
+    autoScroll: true,
+    items: [childPnl1, childPnl2],
+    tbar: [
+      {
+        text: "Add child",
+        handler: function () {
+          var numItems = myWin.items.getCount() + 1;
+          myWin.add({
+            title: "Child number " + numItems,
+            height: 60,
+            width: 300,
+            frame: true,
+            collapsible: true,
+            collapsed: true,
+            html: "Yay, another child!",
+          });
+          myWin.updateLayout();
+        },
+      },
+    ],
+  });
+
+  myWin.show();
+};
+
 const tabPanel = () => {
   var simpleTab = {
     title: "Personal Information",
