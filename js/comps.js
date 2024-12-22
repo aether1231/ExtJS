@@ -1,4 +1,85 @@
-const layoutAnchor = () => {
+const layoutAccordion = () => {
+  var myWin = Ext.create("Ext.Window", {
+    height       : 200,
+    width        : 300,
+    border       : false,
+    title        : 'A Window with an Accordion layout',
+    layout       : 'accordion',
+    layoutConfig : { 
+        animate      : false 
+    },
+    items : [
+        {
+            xtype       : 'form',
+            title       : 'General info',
+            bodyStyle   : 'padding: 5px',
+            defaultType : 'textfield',
+            fieldDefaults: {
+                labelWidth  : 50
+            },
+            items       : [
+                {
+                    fieldLabel : 'Name',
+                    anchor     : '-10',
+                    width: 20 
+                },
+                {
+                    xtype      : 'field',
+                    fieldLabel : 'Age',
+                    anchor     :   '-10',
+                    size       :  3 
+                },
+                {
+                    xtype      : 'combo',
+                    fieldLabel : 'Location',
+                    anchor     : '-10',
+                    store      : [ 'Here', 'There', 'Anywhere' ]
+                }
+            ]
+        },
+        {
+            xtype  : 'panel',
+            autoEl : {},
+            title  : 'Bio',
+            layout : 'fit',
+            items  : {
+                xtype : 'textarea',
+                value  : 'Tell us about yourself'
+            }
+        },
+        {
+            title : 'Instructions',
+            html  : 'Please enter information.',
+            tools : [
+                {id : 'gear'}, {id:'help'}
+            ]
+        }
+      ]
+  });
+
+  myWin.show();
+}
+
+const layoutFit = () => {
+  var myWin = Ext.create("Ext.Window", {
+    height     : 200,
+    width      : 200,
+    layout     : 'fit',
+    autoScroll : true,
+    border     : false,
+    items      : [
+        {
+            title : 'Panel1',
+            html   : 'I fit in my parent!',
+            frame  : true
+        }
+      ]
+  });
+
+  myWin.show();
+}
+
+const layoutAnchor2 = () => {
   var myWin = Ext.create("Ext.Window", {
     height: 300,
     width: 300,
@@ -9,19 +90,14 @@ const layoutAnchor = () => {
     items: [
       {
         title: "Panel1",
-        anchor: "100%, 25%",
+        anchor: "-50, -150",
         frame: true,
       },
       {
         title: "Panel2",
-        anchor: "0, 50%",
+        anchor: "-10, -150",
         frame: true,
-      },
-      {
-        title: "Panel3",
-        anchor: "50%, 25%",
-        frame: true,
-      },
+      }
     ],
   });
 

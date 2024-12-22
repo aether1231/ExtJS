@@ -6,5 +6,8 @@ Ext.onReady(() => {
   // messageBox2();
   // tabPanel();
   // layoutAuto();
-  layoutAnchor();
+  // layoutAnchor();
+  // layoutAnchor2();
+  // layoutFit();
+  layoutAccordion();
 });
