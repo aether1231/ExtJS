@@ -9,7 +9,7 @@ const comboboxRemote = () => {
     fields: ["fullName", "id"],
     proxy: {
       type: "jsonp",
-      url: "http://extjsinaction.com/dataQuery.php",
+      url: "../php/main.php?op=1",
     },
   });
 
