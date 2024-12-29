@@ -1,4 +1,4 @@
-const combobox1 = () => {
+const comboboxRemote = () => {
   Ext.QuickTips.init();
   var remoteJsonStore = Ext.create(Ext.data.Store, {
     root: "records",
@@ -27,6 +27,39 @@ const combobox1 = () => {
     title: "",
     height: 100,
     labelWidth: 100,
+    bodyStyle: "padding: 5px",
+    items: combo,
+  }).show();
+};
+
+const comboboxLocal = () => {
+  Ext.QuickTips.init();
+  var names = [
+    ["Jack Slocum"],
+    ["Abe Elias"],
+    ["Aaron Conran"],
+    ["Evan Trimboli"],
+  ];
+
+  var mySimpleStore = {
+    type: "array",
+    data: names,
+    fields: ["name"],
+  };
+
+  var combo = {
+    xtype: "combo",
+    fieldLabel: "Select a name",
+    store: mySimpleStore,
+    displayField: "name",
+    typeAhead: true,
+    mode: "local",
+  };
+
+  new Ext.Window({
+    title: "",
+    height: 100,
+    labelWidth: 80,
     bodyStyle: "padding: 5px",
     items: combo,
   }).show();
