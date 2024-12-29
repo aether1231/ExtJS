@@ -1,5 +1,5 @@
 const combobox1 = () => {
-  Ext.QuickTips.init();
+  // Ext.QuickTips.init();
   var remoteJsonStore = Ext.create(Ext.data.Store, {
     root: "records",
     totalProperty: "totalCount",
@@ -9,7 +9,7 @@ const combobox1 = () => {
     fields: ["fullName", "id"],
     proxy: {
       type: "jsonp",
-      url: "http://extjsinaction.com/dataQuery.php",
+      url: "../php/main.php?op=1",
     },
   });
 
