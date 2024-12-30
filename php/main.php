@@ -15,20 +15,25 @@ class App {
     private $queryParams;
 
     function __construct () {
+        // create $queryData associative Array
+        $queryArray = explode('&', $_SERVER['QUERY_STRING']);
+        $queryData = array();
+        for ($i = 0; $i < count($queryArray); $i++) {
+            $queryPair = explode('=', $queryArray[$i]);
+            $queryData[$queryPair[0]] = $queryPair[1];
+        }
+        $this->queryParams = $queryData;
+        
+        $servername = $this->queryParams['srvr'];
+        $username = $this->queryParams['user'];
+        $password = $this->queryParams['pass'];
+        $dbName = $this->queryParams['db'];
         require_once('connect.php');
+
         $this->dbName = $dbName;
         $this->out['SID'] = session_id();
         if ($connectedToDb) {
             $this->conn = $conn;
-
-            // create $queryData associative Array
-            $queryArray = explode('&', $_SERVER['QUERY_STRING']);
-            $queryData = array();
-            for ($i = 0; $i < count($queryArray); $i++) {
-                $queryPair = explode('=', $queryArray[$i]);
-                $queryData[$queryPair[0]] = $queryPair[1];
-            }
-            $this->queryParams = $queryData;
         } else {
             $this->out['status'] = false;
             $this->out['error'] = 'Error connecting to database';
@@ -52,7 +57,7 @@ class App {
     }
 
     private function getData() {
-        $sql = "SELECT * FROM extjs.extjsinactiondata";
+        $sql = "SELECT * FROM extjsInActionData";
         $result = mysqli_query($this->conn, $sql);
         $noOfRows = mysqli_num_rows($result);
         if ($result) {

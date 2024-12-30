@@ -2,41 +2,45 @@ const comboboxRemote = () => {
   Ext.QuickTips.init();
 
   var remoteJsonStore = Ext.create(Ext.data.JsonStore, {
-    storeId : 'people',
-    fields  : [ 'id', 'name' ],
-    proxy   : {
-        type   : 'ajax',
-        url    : 'http://localhost/Extjs/php/main.php?op=1',
-        reader : {
-            type          : 'json',
-            rootProperty  : 'records',
-            totalProperty : 'totalCount'
-        }
-      }
+    storeId: "people",
+    fields: ["id", "name"],
+    proxy: {
+      type: "ajax",
+      url:
+        `${localStorage.getItem("baseURL")}/php/main.php?op=1` +
+        `&srvr=${localStorage.getItem("servername")}` +
+        `&user=${localStorage.getItem("username")}` +
+        `&pass=${localStorage.getItem("password")}` +
+        `&db=${localStorage.getItem("dbName")}`,
+      reader: {
+        type: "json",
+        rootProperty: "records",
+        totalProperty: "totalCount",
+      },
+    },
   });
 
   var combo = {
-    xtype          : 'combo',
-    queryMode      : 'remote',
-    fieldLabel     : 'Search by name',
-    width          : 320,
-    forceSelection : true,
-    displayField   : 'name',
-    valueField     : 'id',
-    pageSize       : 20,
-    minChars       : 1,
-    triggerAction  : 'all',
-    store          : remoteJsonStore
+    xtype: "combo",
+    queryMode: "remote",
+    fieldLabel: "Search by name",
+    width: 320,
+    forceSelection: true,
+    displayField: "name",
+    valueField: "id",
+    pageSize: 20,
+    minChars: 1,
+    triggerAction: "all",
+    store: remoteJsonStore,
   };
 
   Ext.create(Ext.Window, {
-      title      : '',
-      height     : 100,
-      labelWidth : 100,
-      bodyStyle  : 'padding: 5px',
-      items      : combo
-    }
-  ).show();
+    title: "",
+    height: 100,
+    labelWidth: 100,
+    bodyStyle: "padding: 5px",
+    items: combo,
+  }).show();
 };
 
 const comboboxLocal = () => {
