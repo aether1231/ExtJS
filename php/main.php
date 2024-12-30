@@ -57,7 +57,7 @@ class App {
         $noOfRows = mysqli_num_rows($result);
         if ($result) {
             for ($i = 0; $i < $noOfRows; $i++) {
-                $dbRow = mysqli_fetch_row($result);
+                $dbRow = mysqli_fetch_assoc($result);
                 $this->out['data'][$i] = $dbRow;
             }
         }
