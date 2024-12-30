@@ -5,3 +5,25 @@
   padding: 2px 2px 2px 2px;
   margin: 2px 2px 2px 2px;
 }
+
+.customCombo {
+  .combo-result-item {
+    padding: 2px;
+    border: 1px solid #ffffff;
+  }
+
+  .combo-result-item-over {
+    border: 1px solid;
+  }
+
+  .combo-name {
+    font-weight: bold;
+    font-size: 11px;
+    background-color: #ffff99;
+  }
+
+  .combo-full-address {
+    font-size: 11px;
+    color: #555555;
+  }
+}

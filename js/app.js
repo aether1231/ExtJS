@@ -10,5 +10,6 @@ Ext.onReady(() => {
   // textField1();
   // numberField1();
   // comboboxLocal();
-  comboboxRemote();
+  // comboboxRemote();
+  comboboxCustomRemote();
 });

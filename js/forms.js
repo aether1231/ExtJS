@@ -1,3 +1,87 @@
+const comboboxCustomRemote = () => {
+  Ext.QuickTips.init();
+
+  var remoteJsonStore = Ext.create(Ext.data.JsonStore, {
+    baseParams: {
+      column: "fullName",
+    },
+    fields: [
+      {
+        name: "name",
+        mapping: "fullName",
+      },
+      {
+        name: "id",
+        mapping: "id",
+      },
+      {
+        name: "address",
+        mapping: "address",
+      },
+      {
+        name: "city",
+        mapping: "city",
+      },
+      {
+        name: "state",
+        mapping: "state",
+      },
+      {
+        name: "zip",
+        mapping: "zip",
+      },
+    ],
+    proxy: {
+      type: "ajax",
+      url:
+        `${localStorage.getItem("baseURL")}/php/main.php?op=1` +
+        `&srvr=${localStorage.getItem("servername")}` +
+        `&user=${localStorage.getItem("username")}` +
+        `&pass=${localStorage.getItem("password")}` +
+        `&db=${localStorage.getItem("dbName")}`,
+      reader: {
+        type: "json",
+        rootProperty: "records",
+        totalProperty: "totalCount",
+      },
+    },
+  });
+
+  var combo = {
+    cls: "customCombo",
+    xtype: "combo",
+    queryMode: "remote",
+    fieldLabel: "Search by name",
+    width: 320,
+    forceSelection: true,
+    displayField: "name",
+    valueField: "id",
+    pageSize: 20,
+    minChars: 1,
+    triggerAction: "all",
+    store: remoteJsonStore,
+    listConfig: {
+      getInnerTpl: function () {
+        return (
+          ' <div data-qtip="{name}">' +
+          '<div class="combo-name">{name}</div>' +
+          '<div class="combo-full-address"> {address} </div>' +
+          '<div class="combo-full-address">{city} {state} {zip}</div>' +
+          "</div>"
+        );
+      },
+    },
+  };
+
+  Ext.create(Ext.Window, {
+    title: "",
+    height: 100,
+    labelWidth: 100,
+    bodyStyle: "padding: 5px",
+    items: combo,
+  }).show();
+};
+
 const comboboxRemote = () => {
   Ext.QuickTips.init();
 
