@@ -16,5 +16,6 @@ Ext.onReady(() => {
   // timeFieldWithRange();
   // htmlEditor();
   // htmlEditorDisabledButtons();
-  dateField();
+  // dateField();
+  c6_7_2_formPanel();
 });

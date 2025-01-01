@@ -1,3 +1,117 @@
+const c6_7_2_formPanel = () => {
+  Ext.QuickTips.init();
+  var fieldset1 = {
+    xtype       : 'fieldset',
+    title       : 'Name Information',
+    flex        : 1,
+    border      : false,
+    labelWidth  : 50,
+    defaultType : 'textfield',
+    defaults    : {
+      anchor     : '-10',
+      allowBlank : false
+    },
+    items : [
+      {
+        fieldLabel : 'First',
+        name       : 'firstName'
+      },
+      {
+        fieldLabel : 'Middle',
+        name       : 'middle'
+      },
+      {
+        fieldLabel : 'Last',
+        name       : 'lastName'
+      }
+    ]
+  };
+
+  var fieldset2 = Ext.apply({}, {
+  flex: 1,
+  labelWidth: 30,
+  title: 'Address Information',
+  defaults: {
+    layout: 'column',
+    anchor: '100%'
+  },
+  items: [
+    {
+      fieldLabel: 'Address',
+      name: 'address'
+    },
+    {
+      fieldLabel: 'Street',
+      name: 'street'
+    },
+    {
+      xtype: 'container',
+      layout: 'column',
+      items: [
+        {
+          xtype       : 'fieldcontainer',
+          columnWidth : .5,
+          items       : [
+            {
+              xtype      : 'textfield',
+              fieldLabel : 'State',
+              name       : 'state',
+              labelWidth : 100,
+              width      : 150
+            }
+          ]
+        },
+        {
+          xtype       : 'fieldcontainer',
+          columnWidth : .5,
+          items       : [
+            {
+              xtype      : 'textfield',
+              fieldLabel : 'Zip',
+              name       : 'zip',
+              labelWidth : 30,
+              width      : 162
+            }
+          ]
+        }
+      ]
+    }
+  ]}, fieldset1);
+
+  var fieldsetContainer = {
+    xtype: 'container',
+    layout: {
+      type: 'hbox' ,
+      align: 'stretch'
+    },
+    items: [
+      fieldset1,
+      fieldset2
+    ]
+  };
+
+  var fp = new Ext.form.Panel({
+    renderTo: Ext.getBody(),
+    width: 700,
+    title: 'Our complex form',
+    height: 500,
+    frame: true,
+    style: 'margin: 20',
+    layout : {
+      type: 'vbox',
+      align: 'stretch'
+    },
+
+    defaults: {
+      msgTarget: 'side',
+      //  anchor: '-20'
+    },
+    items: [
+      fieldsetContainer
+    ]
+  });
+}
+
 const dateField = () => {
   Ext.QuickTips.init();
 
