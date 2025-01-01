@@ -11,5 +11,10 @@ Ext.onReady(() => {
   // numberField1();
   // comboboxLocal();
   // comboboxRemote();
-  comboboxCustomRemote();
+  // comboboxCustomRemote();
+  // timeField();
+  // timeFieldWithRange();
+  // htmlEditor();
+  // htmlEditorDisabledButtons();
+  dateField();
 });

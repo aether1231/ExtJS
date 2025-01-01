@@ -1,3 +1,130 @@
+const dateField = () => {
+  Ext.QuickTips.init();
+
+  var dateField = {
+    xtype: "datefield",
+    fieldLabel: "Please select a date",
+    anchor: "100%",
+    labelWidth: 120,
+    format: "d/m/Y",
+    date: ["06/01/2025"],
+  };
+
+  new Ext.Window({
+    title: "",
+    layout: "fit",
+    labelWidth: 100,
+    height: 70,
+    width: 250,
+    bodyStyle: "padding: 5px",
+    items: dateField,
+  }).show();
+};
+
+const htmlEditorDisabledButtons = () => {
+  Ext.QuickTips.init();
+
+  var htmlEditor = Ext.create("Ext.form.HtmlEditor", {
+    xtype: "htmleditor",
+    fieldLabel: "Enter in any text",
+    anchor: "100% 100%",
+    allowBlank: false,
+    enableFontSize: false,
+    enableFont: false,
+    validate: function () {
+      var val = this.getValue();
+      return this.allowBlank || val.length > 1;
+    },
+  });
+  var f = {
+    xtype: "form",
+    labelWidth: 100,
+    items: htmlEditor,
+    border: false,
+  };
+
+  new Ext.Window({
+    title: "",
+    layout: "fit",
+    height: 300,
+    width: 640,
+    items: f,
+    buttons: [
+      {
+        text: "Is the html editor valid??",
+        handler: function (a, b) {
+          var isValid = htmlEditor.validate();
+          var msg = isValid ? "valid" : "invalid";
+          Ext.MessageBox.alert("", "The HTML Editor is " + msg);
+        },
+      },
+    ],
+  }).show();
+};
+
+const htmlEditor = () => {
+  Ext.QuickTips.init();
+
+  var htmlEditor = {
+    xtype: "htmleditor",
+    fieldLabel: "Enter in any text",
+    anchor: "100% 100%",
+  };
+
+  new Ext.Window({
+    title: "",
+    labelWidth: 100,
+    height: 300,
+    width: 640,
+    bodyStyle: "padding: 5px",
+    items: htmlEditor,
+  }).show();
+};
+
+const timeFieldWithRange = () => {
+  Ext.QuickTips.init();
+
+  var dateField = {
+    xtype: "timefield",
+    fieldLabel: "Please select time",
+    anchor: "100%",
+    minValue: "09:00",
+    maxValue: "18:00",
+    increment: 30,
+    format: "H:i",
+  };
+
+  new Ext.Window({
+    title: "A time field Example",
+    layout: "fit",
+    labelWidth: 100,
+    height: 70,
+    width: 250,
+    bodyStyle: "padding: 5px",
+    items: dateField,
+  }).show();
+};
+
+const timeField = () => {
+  Ext.QuickTips.init();
+
+  var dateField = {
+    xtype: "timefield",
+    fieldLabel: "Please select time",
+    anchor: "100%",
+  };
+
+  new Ext.Window({
+    title: "A time field Example",
+    layout: "fit",
+    labelWidth: 100,
+    height: 70,
+    width: 250,
+    bodyStyle: "padding: 5px",
+    items: dateField,
+  }).show();
+};
+
 const comboboxCustomRemote = () => {
   Ext.QuickTips.init();
 
